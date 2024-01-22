@@ -18,7 +18,9 @@ const Login = () => {
     if (user && user[0].password === details.password) {
       localStorage.setItem("currentUser", JSON.stringify(user[0]));
       setCurrentUser(user[0]);
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } else if (!user) {
       alert("user does not exist");
     } else if (user && user[0].password !== details.password) {

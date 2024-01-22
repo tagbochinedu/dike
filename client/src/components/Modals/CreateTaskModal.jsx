@@ -23,6 +23,7 @@ const CreateTaskModal = () => {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       const newTask = {
         ...task,
+        description: task.description.replace(/\n/g, "<br/>"),
         numberJoined: 1,
         numberCompleted: 0,
         createdBy: currentUser.email,
@@ -51,14 +52,16 @@ const CreateTaskModal = () => {
         numberJoined: 1,
         numberCompleted: 0,
         createdBy: currentUser.email,
-      };console.log('hello')
+      };
+      console.log("hello");
       currentUser.tasks.unshift(newTask);
       const newUsers = users.map((user) => {
         if (user.id === currentUser.id) {
           return { ...user, tasks: [newTask, ...user.tasks] };
         }
         return user;
-      });console.log("hello");
+      });
+      console.log("hello");
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
       localStorage.setItem("users", JSON.stringify(newUsers));
       setCurrentUser(currentUser);
@@ -77,7 +80,6 @@ const CreateTaskModal = () => {
 
   const changeHandler = (e) => {
     if (e.target.name === "deadline") {
-      console.log('hello')
       setTask((prev) => ({
         ...prev,
         [e.target.name]: Date.parse(new Date(e.target.value)),
@@ -90,7 +92,7 @@ const CreateTaskModal = () => {
     <form
       onSubmit={submitHandler}
       className={`fixed max-w-lg mx-auto left-0 right-0  px-5 pt-10 bg-white z-10 h-screen ransition-all duration-300 ${
-        createTask ? "top-0" : "-top-[100vh]"
+        createTask ? "top-0" : "-top-[200vh]"
       }`}
     >
       <div className="flex justify-between items-center mb-5">
@@ -163,7 +165,6 @@ const CreateTaskModal = () => {
           name="description"
           className="bg-gray-50 w-full px-3 pt-3 focus:border rounded-md focus:outline-none focus:border-blue-900 resize-none"
           placeholder="Hey, what's going on?"
-          maxLength={400}
           rows={5}
           autoCorrect="off"
           onChange={(e) =>

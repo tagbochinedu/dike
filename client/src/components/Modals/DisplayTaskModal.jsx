@@ -173,8 +173,8 @@ const DisplayTaskModal = () => {
 
   return (
     <div
-      className={`fixed max-w-lg mx-auto left-0 right-0 pt-10 bg-white z-10 h-screen ransition-all duration-300 ${
-        openTask ? "top-0" : "top-[100vh]"
+      className={`fixed max-w-lg mx-auto left-0 right-0 pt-10 bg-white z-10 h-screen transition-all duration-300 overflow-y-auto ${
+        openTask ? "top-0" : "top-[200vh]"
       }`}
     >
       {" "}
@@ -254,9 +254,13 @@ const DisplayTaskModal = () => {
               <span className="text-gray-600 text-sm mb-2 font-semibold">
                 Description:
               </span>
-              <p>{task?.description}</p>
+              <p
+                className="break-words"
+                dangerouslySetInnerHTML={{
+                  __html: task?.description,
+                }}
+              />
             </div>
-            <div className=""></div>
           </div>
         </div>
       </div>

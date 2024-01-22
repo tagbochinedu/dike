@@ -18,7 +18,7 @@ export const StateProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("currentUser"))
       ? JSON.parse(localStorage.getItem("currentUser"))
-      : {}
+      : ''
   );
 
   const value = {

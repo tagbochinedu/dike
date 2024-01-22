@@ -91,7 +91,7 @@ const CreateTaskModal = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className={`fixed max-w-lg mx-auto left-0 right-0  px-5 pt-10 bg-white z-10 h-screen ransition-all duration-300 ${
+      className={`fixed max-w-lg mx-auto left-0 right-0  px-5 pt-10 bg-white z-10 h-screen ransition-all duration-300 overflow-y-auto ${
         createTask ? "top-0" : "-top-[200vh]"
       }`}
     >
